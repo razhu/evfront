@@ -2,8 +2,8 @@ import axios from 'axios'
 
 export default {
 
-  fetchMovieCollection (name) {
-    return axios.get('&s=' + name)
+  postsUsuarioId (idUsuario) {
+    return axios.get(`/${idUsuario}/posts`)
       .then(response => {
         return response.data
       })

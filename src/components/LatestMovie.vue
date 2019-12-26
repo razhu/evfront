@@ -18,26 +18,12 @@
         :key="index"
         mb-2>
         <v-card>
-          <v-img
-            :src="item.Poster"
-            aspect-ratio="1"
-          ></v-img>
 
           <v-card-title primary-title>
             <div>
-              <h2>{{item.Title}}</h2>
-              <div>Year: {{item.Year}}</div>
-              <div>Type: {{item.Type}}</div>
-              <div>IMDB-id: {{item.imdbID}}</div>
+              <h2>{{item.title}}</h2>
             </div>
           </v-card-title>
-
-          <v-card-actions class="justify-center">
-            <v-btn flat
-              color="green"
-              @click="singleMovie(item.imdbID)"
-              >View</v-btn>
-          </v-card-actions>
 
         </v-card>
       </v-flex>
@@ -56,9 +42,10 @@ export default {
     }
   },
   mounted () {
-    movieApi.fetchMovieCollection('indiana')
+    movieApi.postsUsuarioId(2)
       .then(response => {
-        this.wholeResponse = response.Search
+        console.log('-----------en el front response ', response);
+        this.wholeResponse = response
         this.loading = false
       })
       .catch(error => {
